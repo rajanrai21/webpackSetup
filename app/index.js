@@ -48,4 +48,18 @@
 
 // let z = (x=1,y=1) => x**y;
 // console.log(z(3,4).toString);
-console.log('Working')
+//spread operator
+// var a = [1,2,3];
+// var b = [4,5,...a,6];
+// console.log(b);
+// //rest parameter
+// function fun(...a){
+//     console.log(a)
+// }
+// fun(12,45,6,1,2,3);
+// let rupee = 20
+// let dollar = rupee * 70;
+// console.log(`${rupee} rupee is ${dollar} dollar`)
+let z = ['Rajan',1,56];
+let [a,,c] = z;
+console.log(a)
