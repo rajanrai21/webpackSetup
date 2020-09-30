@@ -87,7 +87,7 @@ module.exports = {
 save all file open a browser -> open localhost:3000 -> inspect -> console -> you can see your index.js code here if you add any other statement you can see that thing also without running npm start again because of development server
 
 
-/* Babel setup for to transpile our modern js code to fully supported js code to all browser*/
+/* Babel setup for to transpiler our modern js code to fully supported js code to all browser*/
 
 firstly open command line in project directory 
 
@@ -99,6 +99,42 @@ to include babel-core, babel-loader and babel-preset-env development dependency
 
 babel-core is primary transpire 
 babel-loader allow us to import and export js file as their own component and module
-babel-preset add on top of babel-core to support es6 functionality based on specific browser
+babel-preset-env add on top of babel-core to support es6 functionality based on specific browser
 
 
+add babel within webpack.config.js file (update webpack.config file with following changes)
+
+const path = require('path');
+
+module.exports = {
+    entry: path.resolve(__dirname,'app'),
+    output: {
+        path: path.resolve(__dirname,'build'),
+        filename: 'bundle.js'
+    },
+    devServer:{
+        port: 3000,
+        contentBase: path.resolve(__dirname,'build')
+    },
+    //this allow us to customize how module within our project will be treated 
+    module:{
+        //rules specify how module will actually modified when the are created within webpack
+        rules:[
+            {
+                test: /\.js$/, //all js file
+                exclude: /node_modules/, //not include node_modules
+                use: ['babel-loader'] //this rule should use babel loader
+            }
+        ]
+    }
+};
+
+after this we need to tell babel to include special env preset that we also install for the extra config from es6 to es5 on specific browser 
+
+create a file in root folder testes6 .babelrc
+
+{
+    "presets": ["env"]
+}
+
+now go to comman promt run npm run start you can see no error and check localhost:3000 console that your code is working 
