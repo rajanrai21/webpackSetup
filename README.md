@@ -87,4 +87,18 @@ module.exports = {
 save all file open a browser -> open localhost:3000 -> inspect -> console -> you can see your index.js code here if you add any other statement you can see that thing also without running npm start again because of development server
 
 
+/* Babel setup for to transpile our modern js code to fully supported js code to all browser*/
+
+firstly open command line in project directory 
+
+than 
+
+npm i babel-core@6.26.3 babel-loader@7.1.4 babel-preset-env@1.7.0 --save-dev
+
+to include babel-core, babel-loader and babel-preset-env development dependency 
+
+babel-core is primary transpire 
+babel-loader allow us to import and export js file as their own component and module
+babel-preset add on top of babel-core to support es6 functionality based on specific browser
+
 
